@@ -1,0 +1,71 @@
+/* * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+} */
+
+#appBar{
+    background-color: rgb(141, 139, 139);
+    /* border: 1px solid rgb(116, 115, 115); */
+}
+
+#toolBar{
+    background-color: rgb(12, 192, 192);
+    color:white;
+   
+}
+
+#dashboardReectangle1{
+    width: 45%;
+    height: 270px;
+    position: relative;
+    top: 10px;
+    left: 20px;
+    background-color: white;
+    /* border: 1px solid rgb(160, 159, 159); */
+    /* filter: drop-shadow(5px 5px 5px black); */
+}
+
+#dashboardReectangle2{
+    width: 45%;
+    height: 270px;
+    position: relative;
+    top: -260px;
+    left: 590px;
+    background-color: white;
+    /* border: 1px solid rgb(160, 159, 159); */
+    /* filter: drop-shadow(5px 5px 5px black); */
+}
+
+ #dashboardReectangle3{
+    width: 45%;
+    height: 255px;
+    position: relative;
+    top: -250px;
+    left: 590px;
+    background-color: white;
+    
+}
+
+#dashboardReectangle4{
+    width: 45%;
+    height: 255px;
+    position: relative;
+    top: -505px;
+    left: 20px;
+    background-color: rgb(255, 255, 255);
+   
+}
+
+#driverBtn{
+    position: relative;
+    top: -1px;
+    left: -25px;
+}
+
+#driverBtn1{
+    position: relative;
+    top: -20px;
+    left: -25px;
+}

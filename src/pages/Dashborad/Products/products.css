@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.MainTopic{
+    position: absolute;
+    top: 85px;
+    left: 100px;
+    /* border: 1px solid red; */
+    
+}
+
+.productsManageSection{
+    display: flex;
+    position: absolute;
+    width: 80%;
+    top: 140px;
+    height: 80vh;
+    /* border: 1px solid red; */
+}
+
+.ManageSection{
+    width: 50vw;
+    height: 70vh;
+    position: relative;
+    top:90px;
+    /* border: 1px solid red; */
+}
+
+.ManageSection2{
+    width: 50vw;
+    /* border: 1px solid red; */
+    height: 50vh;
+    position: relative;
+    top:90px;
+}

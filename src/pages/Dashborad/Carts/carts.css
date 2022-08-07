@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.Topic{
+    position: absolute;
+    top: 85px;
+    left: 100px;
+}
+
+.CartManageSection{
+    display: flex;
+    position: absolute;
+    width: 80%;
+    top: 140px;
+    height: 80vh;
+    /* border: 1px solid red; */
+}
+
+
+.Section{
+    width: 50vw;
+    height: 70vh;
+    /* border: 1px solid red; */
+}
+
+.Section2{
+    width: 50vw;
+    /* border: 1px solid red; */
+    height: 50vh;
+}
