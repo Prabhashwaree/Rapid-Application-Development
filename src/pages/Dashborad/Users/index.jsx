@@ -342,7 +342,7 @@ class Users extends Component {
 
 
                     <button onClick={this.updateUsers} className='btnUserUpdate'><b>Update</b></button>
-                    {/* <button className='btnClear'>Clear</button> */}
+                   
                 </section>
 
 
