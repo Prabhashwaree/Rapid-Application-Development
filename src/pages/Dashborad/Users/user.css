@@ -59,3 +59,20 @@
     display: flex;
     height: 100vh;
 }
+
+.btnUserUpdate{
+    position: absolute;
+    width: 120px;
+    height: 40px;
+    right: 108px;
+    top: 100px;
+    border: none;
+    color: black;
+    background-color: lightblue;
+    border-radius: 5px;
+}
+
+/* .tableRows{
+    color: brown;
+} */
+

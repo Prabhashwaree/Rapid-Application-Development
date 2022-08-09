@@ -48,7 +48,7 @@ class createUser{
 
        PutCreateUser  = async (data,id) => {
         const promise = new Promise((resolve, reject) => {
-           axios.put('users/'+ data,id)
+           axios.put('users/'+id, data)
            .then((res) => {
                return resolve(res)
            })

@@ -23,9 +23,9 @@ class Users extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            id:'',
+            id: '',
 
-            UserFormData: { 
+            UserFormData: {
                 email: '',
                 username: '',
                 password: '',
@@ -54,7 +54,7 @@ class Users extends Component {
     }
 
     deleteUser = async (id) => {
-        
+
 
         let res = await createUserService.deleteCreateUser(id)
 
@@ -74,42 +74,81 @@ class Users extends Component {
         }
 
     }
+    clearFields = () => {
+        this.setState({
+            UserFormData: {
+                email: '',
+                username: '',
+                password: '',
+                name: {
+                    firstname: '',
+                    lastname: ''
+                },
+                address: {
+                    city: '',
+                    street: '',
+                    number: '',
+                    zipcode: '',
+                    geolocation: {
+                        lat: '',
+                        long: ''
+                    }
+                },
+                phone: ''
+
+            }
+        })
+    }
 
 
+    updateUser = (data) => {
+        console.log(data);
+        this.setState({
 
-updateUser = (data) => {
-    console.log(data);
-    this.setState ({
+            id: data.id,
 
-         id:data.id,
-         
-        UserFormData: { 
-            email: data.email,
-            username: data.username,
-            password: data.password,
-            name: {
-                firstname: data.firstname,
-                lastname: data.lastname
-            },
-            address: {
-                city: data.city,
-                street: data.street,
-                number: data.number,
-                zipcode: data.zipcode,
-                geolocation: {
-                    lat: data.lat,
-                    long: data.long
-                }
-            },
-            phone: data.phone
+            UserFormData: {
+                email: data.email,
+                username: data.username,
+                password: data.password,
+                name: {
+                    firstname: data.name.firstname,
+                    lastname: data.name.lastname
+                },
+                address: {
+                    city: data.address.city,
+                    street: data.address.street,
+                    number: data.address.number,
+                    zipcode: data.address.zipcode,
+                    geolocation: {
+                        lat: data.address.geolocation.lat,
+                        long: data.address.geolocation.long
+                    }
+                },
+                phone: data.phone
 
+            }
+        })
+
+    }
+
+    updateUsers = async () => {
+        let formData = this.state.UserFormData;
+        let res = await createUserService.PutCreateUser(formData, this.state.id);
+        if (res.status === 200) {
+            this.setState({
+                alert: true,
+
+            });
+            this.loadData();
+            this.clearFields();
+
+        } else {
+            this.setState({
+
+            });
         }
-    })
-       
-
-    
-}
-
+    }
 
 
     // exampleForMap = () => {
@@ -200,22 +239,22 @@ updateUser = (data) => {
                         </Box>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '100px' }}>
                             <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="Zip Code " style={{ width: '70%' }}
-                                     value={this.state.UserFormData.address.zipcode}
-                                     onChange={(e) => {
-                                         let UserFormDatas = this.state.UserFormData
-                                         UserFormDatas.address.zipcode = e.target.value
-                                         this.setState({ UserFormDatas })
-                                     }}
+                                value={this.state.UserFormData.address.zipcode}
+                                onChange={(e) => {
+                                    let UserFormDatas = this.state.UserFormData
+                                    UserFormDatas.address.zipcode = e.target.value
+                                    this.setState({ UserFormDatas })
+                                }}
                             />
                         </Box>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '120px' }}>
                             <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="Long Value" style={{ width: '70%' }}
-                                 value={this.state.UserFormData.address.geolocation.long}
-                                 onChange={(e) => {
-                                     let UserFormDatas = this.state.UserFormData
-                                     UserFormDatas.address.geolocation.long = e.target.value
-                                     this.setState({ UserFormDatas })
-                                 }}
+                                value={this.state.UserFormData.address.geolocation.long}
+                                onChange={(e) => {
+                                    let UserFormDatas = this.state.UserFormData
+                                    UserFormDatas.address.geolocation.long = e.target.value
+                                    this.setState({ UserFormDatas })
+                                }}
                             />
                         </Box>
                     </div>
@@ -228,12 +267,12 @@ updateUser = (data) => {
                     <div className='thirdSection'>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '20px' }}>
                             <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="Last Name" style={{ width: '70%' }}
-                                 value={this.state.UserFormData.name.lastname}
-                                 onChange={(e) => {
-                                     let UserFormDatas = this.state.UserFormData
-                                     UserFormDatas.name.lastname = e.target.value
-                                     this.setState({ UserFormDatas })
-                                 }}
+                                value={this.state.UserFormData.name.lastname}
+                                onChange={(e) => {
+                                    let UserFormDatas = this.state.UserFormData
+                                    UserFormDatas.name.lastname = e.target.value
+                                    this.setState({ UserFormDatas })
+                                }}
                             />
                         </Box>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '40px' }}>
@@ -248,12 +287,12 @@ updateUser = (data) => {
                         </Box>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '60px' }}>
                             <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="City" style={{ width: '70%' }}
-                                 value={this.state.UserFormData.address.city}
-                                 onChange={(e) => {
-                                     let UserFormDatas = this.state.UserFormData
-                                     UserFormDatas.address.city = e.target.value
-                                     this.setState({ UserFormDatas })
-                                 }}
+                                value={this.state.UserFormData.address.city}
+                                onChange={(e) => {
+                                    let UserFormDatas = this.state.UserFormData
+                                    UserFormDatas.address.city = e.target.value
+                                    this.setState({ UserFormDatas })
+                                }}
                             />
                         </Box>
 
@@ -267,12 +306,12 @@ updateUser = (data) => {
 
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '80px' }}>
                             <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="Street No" style={{ width: '70%' }}
-                                 value={this.state.UserFormData.address.number}
-                                 onChange={(e) => {
-                                     let UserFormDatas = this.state.UserFormData
-                                     UserFormDatas.address.number = e.target.value
-                                     this.setState({ UserFormDatas })
-                                 }}
+                                value={this.state.UserFormData.address.number}
+                                onChange={(e) => {
+                                    let UserFormDatas = this.state.UserFormData
+                                    UserFormDatas.address.number = e.target.value
+                                    this.setState({ UserFormDatas })
+                                }}
                             />
                         </Box>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '100px' }}>
@@ -302,7 +341,7 @@ updateUser = (data) => {
 
 
 
-                    {/* <button className='btnSave'><b><Link to= "/DashBoard">Save</Link></b></button> */}
+                    <button onClick={this.updateUsers} className='btnUserUpdate'><b>Update</b></button>
                     {/* <button className='btnClear'>Clear</button> */}
                 </section>
 
@@ -314,19 +353,19 @@ updateUser = (data) => {
                         <Table sx={{ minWidth: 1450 }} aria-label="customized table">
                             <TableHead>
                                 <TableRow>
-                                    <TableCell>FirstName</TableCell>
-                                    <TableCell align="center">LastName</TableCell>
-                                    <TableCell align="center">Email</TableCell>
-                                    <TableCell align="center">UserName</TableCell>
-                                    <TableCell align="center">Password</TableCell>
-                                    <TableCell align="center">City</TableCell>
-                                    <TableCell align="center">Street</TableCell>
-                                    <TableCell align="center">StreetNo</TableCell>
-                                    <TableCell align="center">ZipCode</TableCell>
-                                    <TableCell align="center">LastValue</TableCell>
-                                    <TableCell align="center">LongValue</TableCell>
-                                    <TableCell align="center">MobilNo</TableCell>
-                                    <TableCell align="center">Action</TableCell>
+                                    <TableCell>FIRST NAME</TableCell>
+                                    <TableCell align="center">LAST NAME</TableCell>
+                                    <TableCell align="center">EMAIL</TableCell>
+                                    <TableCell align="center">User Name</TableCell>
+                                    <TableCell align="center">PASSWORD</TableCell>
+                                    <TableCell align="center">CITY</TableCell>
+                                    <TableCell align="center">STREET</TableCell>
+                                    <TableCell align="center">STREET NO</TableCell>
+                                    <TableCell align="center">ZIP CODE</TableCell>
+                                    <TableCell align="center">LASTVALUE</TableCell>
+                                    <TableCell align="center">LONG VALUE</TableCell>
+                                    <TableCell align="center">MOBILE NO</TableCell>
+                                    <TableCell align="center">ACTION</TableCell>
 
                                 </TableRow>
                             </TableHead>
@@ -353,21 +392,21 @@ updateUser = (data) => {
 
                                             <TableCell align="right">
 
-                                            <Tooltip title="Delete"><IconButton
-                                        onClick={() => {
-                                            this.deleteUser(row.id);
-                                        }}
-                                    ><DeleteIcon color="error" /></IconButton>
-                                    </Tooltip>
+                                                <Tooltip title="Delete"><IconButton
+                                                    onClick={() => {
+                                                        this.deleteUser(row.id);
+                                                    }}
+                                                ><DeleteIcon color="error" /></IconButton>
+                                                </Tooltip>
 
-                                    <Tooltip title="Edit"><IconButton
-                                        onClick={() => {
-                                            console.log("edit icon clicked!")
-                                            this.updateUser(row);
-                                        }}
-                                    ><EditIcon color='primary'/></IconButton>
-                                    </Tooltip>
-                                              
+                                                <Tooltip title="Edit"><IconButton
+                                                    onClick={() => {
+                                                        console.log("edit icon clicked!")
+                                                        this.updateUser(row);
+                                                    }}
+                                                ><EditIcon color='primary' /></IconButton>
+                                                </Tooltip>
+
                                             </TableCell>
                                         </TableRow>
                                     ))
@@ -389,14 +428,14 @@ updateUser = (data) => {
 
 export default Users;
 
-  {/* <Tooltip title="Delete"><IconButton
+{/* <Tooltip title="Delete"><IconButton
                                                     onClick={() => {
                                                         this.deletecreateUser(row.id)
                                                     }}
                                                 ><DeleteIcon color="error" /></IconButton>
                                                 </Tooltip> */}
 
-                                                {/* <Tooltip title="Edit"><IconButton
+{/* <Tooltip title="Edit"><IconButton
                                         onClick={() => {
                                             console.log("edit icon clicked!")
                                             this.updateRentalRate(row);
