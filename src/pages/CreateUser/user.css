@@ -70,3 +70,17 @@
     border: none;
     border-radius: 5px;
 }
+
+.next{
+    position: absolute;
+    width: 8%;
+    height:40px;
+    bottom: 50px;
+    left: 160px;
+    top:498px;
+    background-color: lightblue;
+    color:rgb(4, 4, 99);
+    border: none;
+    border-radius: 5px;
+    /* font-size: 20px; */
+}

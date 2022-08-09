@@ -18,7 +18,7 @@ class cart{
 
 
 
-        GetCarts = async () => {
+        GetCart = async () => {
             const promise = new Promise((resolve, reject) => {
                 axios.get('carts')
                     .then((res) => {
@@ -31,18 +31,7 @@ class cart{
             return await promise;
         }
 
-        deleteCarts = async (params) => {
-            const promise = new Promise((resolve, reject) => {
-               axios.delete('carts', {params: params})
-               .then((res) => {
-                   return resolve(res)
-               }) 
-               .catch((err) => {
-                   return resolve(err)
-               })
-            })
-            return await promise;
-       };
+        
 
 
 

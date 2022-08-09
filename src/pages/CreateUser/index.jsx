@@ -239,7 +239,8 @@ class CreateUser extends Component {
 
 
                     <button label={this.state.btnLabelCreateUser}  type='submit' onClick={this.submitCreateUserData} className='btnSave'><b><Link to= "/DashBoard">Save</Link></b></button>
-                    <button className='btnClear' onClick={this.clearCreateUserTextFeild}>Clear</button>
+                    <button className='btnClear' onClick={this.clearCreateUserTextFeild}><b>Clear</b></button>
+                    <button className='next'><Link to= "/DashBoard">Next</Link></button>
                     {/* <Link to= "/DashBoard">Save</Link> */}
                 </section>
 

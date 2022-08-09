@@ -152,17 +152,32 @@ updateUser = (data) => {
                     <div className='firstSection'>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '20px' }}>
                             <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="First Name" style={{ width: '70%' }}
-
+                                value={this.state.UserFormData.name.firstname}
+                                onChange={(e) => {
+                                    let UserFormDatas = this.state.UserFormData
+                                    UserFormDatas.name.firstname = e.target.value
+                                    this.setState({ UserFormDatas })
+                                }}
                             />
                         </Box>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '40px' }}>
                             <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="Email" style={{ width: '70%' }}
-
+                                value={this.state.UserFormData.email}
+                                onChange={(e) => {
+                                    let UserFormDatas = this.state.UserFormData
+                                    UserFormDatas.email = e.target.value
+                                    this.setState({ UserFormDatas })
+                                }}
                             />
                         </Box>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '60px' }}>
                             <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="Password" style={{ width: '70%' }}
-
+                                value={this.state.UserFormData.password}
+                                onChange={(e) => {
+                                    let UserFormDatas = this.state.UserFormData
+                                    UserFormDatas.password = e.target.value
+                                    this.setState({ UserFormDatas })
+                                }}
                             />
                         </Box>
 
@@ -175,17 +190,32 @@ updateUser = (data) => {
 
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '80px' }}>
                             <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="Street" style={{ width: '70%' }}
-
+                                value={this.state.UserFormData.address.street}
+                                onChange={(e) => {
+                                    let UserFormDatas = this.state.UserFormData
+                                    UserFormDatas.address.street = e.target.value
+                                    this.setState({ UserFormDatas })
+                                }}
                             />
                         </Box>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '100px' }}>
                             <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="Zip Code " style={{ width: '70%' }}
-
+                                     value={this.state.UserFormData.address.zipcode}
+                                     onChange={(e) => {
+                                         let UserFormDatas = this.state.UserFormData
+                                         UserFormDatas.address.zipcode = e.target.value
+                                         this.setState({ UserFormDatas })
+                                     }}
                             />
                         </Box>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '120px' }}>
                             <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="Long Value" style={{ width: '70%' }}
-
+                                 value={this.state.UserFormData.address.geolocation.long}
+                                 onChange={(e) => {
+                                     let UserFormDatas = this.state.UserFormData
+                                     UserFormDatas.address.geolocation.long = e.target.value
+                                     this.setState({ UserFormDatas })
+                                 }}
                             />
                         </Box>
                     </div>
@@ -198,17 +228,32 @@ updateUser = (data) => {
                     <div className='thirdSection'>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '20px' }}>
                             <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="Last Name" style={{ width: '70%' }}
-
+                                 value={this.state.UserFormData.name.lastname}
+                                 onChange={(e) => {
+                                     let UserFormDatas = this.state.UserFormData
+                                     UserFormDatas.name.lastname = e.target.value
+                                     this.setState({ UserFormDatas })
+                                 }}
                             />
                         </Box>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '40px' }}>
                             <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="User Name" style={{ width: '70%' }}
-
+                                value={this.state.UserFormData.username}
+                                onChange={(e) => {
+                                    let UserFormDatas = this.state.UserFormData
+                                    UserFormDatas.username = e.target.value
+                                    this.setState({ UserFormDatas })
+                                }}
                             />
                         </Box>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '60px' }}>
                             <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="City" style={{ width: '70%' }}
-
+                                 value={this.state.UserFormData.address.city}
+                                 onChange={(e) => {
+                                     let UserFormDatas = this.state.UserFormData
+                                     UserFormDatas.address.city = e.target.value
+                                     this.setState({ UserFormDatas })
+                                 }}
                             />
                         </Box>
 
@@ -222,17 +267,32 @@ updateUser = (data) => {
 
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '80px' }}>
                             <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="Street No" style={{ width: '70%' }}
-
+                                 value={this.state.UserFormData.address.number}
+                                 onChange={(e) => {
+                                     let UserFormDatas = this.state.UserFormData
+                                     UserFormDatas.address.number = e.target.value
+                                     this.setState({ UserFormDatas })
+                                 }}
                             />
                         </Box>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '100px' }}>
                             <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="Lat Value" style={{ width: '70%' }}
-
+                                value={this.state.UserFormData.address.geolocation.lat}
+                                onChange={(e) => {
+                                    let UserFormDatas = this.state.UserFormData
+                                    UserFormDatas.address.geolocation.lat = e.target.value
+                                    this.setState({ UserFormDatas })
+                                }}
                             />
                         </Box>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '120px' }}>
                             <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="Mobile No" style={{ width: '70%' }}
-
+                                value={this.state.UserFormData.phone}
+                                onChange={(e) => {
+                                    let UserFormDatas = this.state.UserFormData
+                                    UserFormDatas.phone = e.target.value
+                                    this.setState({ UserFormDatas })
+                                }}
                             />
                         </Box>
                     </div>
