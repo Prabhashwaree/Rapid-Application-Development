@@ -33,6 +33,9 @@ import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import ReplyAllIcon from '@mui/icons-material/ReplyAll';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 
+import Tooltip from '@mui/material/Tooltip';
+import Avatar from '@mui/material/Avatar';
+
 
  
 const drawerWidth = 240;
@@ -133,6 +136,7 @@ export default function AdminDashBoardPages() {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar id="appBar" position="fixed" open={open} style={{backgroundColor:"#rgb(128, 128, 128)"}}>
+       
         <Toolbar>
           <IconButton
             color="inherit"
@@ -151,10 +155,14 @@ export default function AdminDashBoardPages() {
           PRODUCTION CENTER
           </Typography>
           <Button variant="Create account" style={{position: "relative",backgroundColor:"rgb(141, 139, 139)",left:"960px",zIndex:"1",width:"120px",color:"white"}}><Link to = "/">Log Out</Link></Button>
-          
+          <Tooltip title="Open settings">
+                            <IconButton sx={{ p: 0 }}>
+                                <Avatar alt="Remy Sharp" src="https://avatars.githubusercontent.com/u/90233777?v=4" style={{position:"relative",left:"980px"}}/>
+                            </IconButton>
+                        </Tooltip> 
         </Toolbar>
 
-                
+            
 
       </AppBar>
       <Drawer variant="permanent" open={open}>

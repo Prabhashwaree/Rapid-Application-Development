@@ -7,89 +7,137 @@ import Paper from '@mui/material/Paper';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-
 import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
+import createUserService from '../../../service/createUser';
 
-// import createUserService from '../../../service/createUser';
-
+import Tooltip from '@mui/material/Tooltip';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import IconButton from '@mui/material/IconButton';
 
 import { TextField } from '@mui/material';
 
 
 class Users extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            id:'',
 
-    // constructor(props) {
-    //     super(props)
-    //     this.state = {
-    //       AdminFormData: {
-    //         admin_Id: '',
-    //         type: '',
-    //         userName: '',
-    //         password: '',
-    //         // userLogin:{
-    //         //     user_Id:'',
-    //         //     type:'',
-    //         //     user_Name:'',
-    //         //     password:''
+            UserFormData: { 
+                email: '',
+                username: '',
+                password: '',
+                name: {
+                    firstname: '',
+                    lastname: ''
+                },
+                address: {
+                    city: '',
+                    street: '',
+                    number: '',
+                    zipcode: '',
+                    geolocation: {
+                        lat: '',
+                        long: ''
+                    }
+                },
+                phone: ''
+
+            },
+            data: []
+
+
+        }
+
+    }
+
+    deleteUser = async (id) => {
+        
+
+        let res = await createUserService.deleteCreateUser(id)
+
+        if (res.status === 200) {
+            // this.setState({
+            //     alert: true,
+            //     // message: res.data.message,
+            //     severity: 'success'
+            // });
+            this.loadData();
+        } else {
+            // this.setState({
+            //     alert: true,
+            //     // message: res.data.message,
+            //     severity: 'error'
+            // });
+        }
+
+    }
+
+
+
+updateUser = (data) => {
+    console.log(data);
+    this.setState ({
+
+         id:data.id,
+         
+        UserFormData: { 
+            email: data.email,
+            username: data.username,
+            password: data.password,
+            name: {
+                firstname: data.firstname,
+                lastname: data.lastname
+            },
+            address: {
+                city: data.city,
+                street: data.street,
+                number: data.number,
+                zipcode: data.zipcode,
+                geolocation: {
+                    lat: data.lat,
+                    long: data.long
+                }
+            },
+            phone: data.phone
+
+        }
+    })
+       
+
     
-    //         //   }
-    //       },
-    //       adminData: []
-    
-    //     }
-    //   }
-    
-    //   deleteAdmin = async (id) => {
-    //     let params = {
-    //       admin_Id: id
-    
-    //     }
-    
-    //     // let res = await adminService.deleteAdmin(params)
-    
-    //     if (res.status === 200) {
-    //       this.setState({
-    //         alert: true,
-    //         message: res.data.message,
-    //         severity: 'success'
-    //       });
-    //       this.loadData();
-    //     } else {
-    //       this.setState({
-    //         alert: true,
-    //         message: res.data.message,
-    //         severity: 'error'
-    //       });
-    //     }
-    
-    //   }
-    
-    
-    //   exampleForMap = () => {
+}
+
+
+
+    // exampleForMap = () => {
     //     this.state.data.map((value, index) => {
-    //       console.log(value.index)
+    //         console.log(value.index)
     //     });
-    //   }
-    
-    //   loadData = async () => {
-    //     console.log("load method Calling")
-    //     let res = await adminService.GetAdmin();
-    //     // console.log("admin data " + res.data.data);
-    
-    //     if (res.status === 200) {
-    //       this.setState({
-    //         data: res.data.data
-    //       });
-    //     }
-    //     console.log(this.state.data);
-    
-    //     this.exampleForMap();
-    //   }
-    
-    //   componentDidMount() {
-    //     this.loadData();
-    //   }
+    // }
+
+    loadData = async () => {
+        console.log("load method Calling")
+        let res = await createUserService.GetCreateUser();
+        // console.log("rental data " + res.data.data);
+
+        if (res.status === 200) {
+            this.setState({
+                data: res.data
+            });
+        }
+        console.log(this.state.data);
+
+        // this.exampleForMap();
+    }
+
+    componentDidMount() {
+        this.loadData();
+        console.log(this.loadData);
+    }
+
 
 
 
@@ -98,45 +146,45 @@ class Users extends Component {
         return (
             <>
 
-<h1 className='topic' style={{color:"rgb(7, 146, 128)",position:"relative",left:"50px",top:"10px"}}>User Registration</h1>
-<section className='mainSection'>
-                    
+                <h1 className='topic' style={{ color: "rgb(7, 146, 128)", position: "relative", left: "50px", top: "10px" }}>User Registration</h1>
+                <section className='mainSection'>
+
                     <div className='firstSection'>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '20px' }}>
-                            <TextField size="small" sx={{ width: '40ch'}}  id="outlined-name" label="First Name" style={{width:'70%'}}
+                            <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="First Name" style={{ width: '70%' }}
 
                             />
                         </Box>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '40px' }}>
-                            <TextField size="small" sx={{ width: '40ch'}}  id="outlined-name" label="Email" style={{width:'70%'}}
+                            <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="Email" style={{ width: '70%' }}
 
                             />
                         </Box>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '60px' }}>
-                            <TextField size="small" sx={{ width: '40ch'}} id="outlined-name" label="Password" style={{width:'70%'}}
+                            <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="Password" style={{ width: '70%' }}
 
                             />
                         </Box>
-                    
+
                     </div>
 
 
 
 
                     <div className='secondSection'>
-                        
+
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '80px' }}>
-                            <TextField size="small" sx={{ width: '40ch'}} id="outlined-name" label="Street" style={{width:'70%'}}
+                            <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="Street" style={{ width: '70%' }}
 
                             />
                         </Box>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '100px' }}>
-                            <TextField size="small" sx={{ width: '40ch'}} id="outlined-name" label="Zip Code " style={{width:'70%'}}
+                            <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="Zip Code " style={{ width: '70%' }}
 
                             />
                         </Box>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '120px' }}>
-                            <TextField size="small" sx={{ width: '40ch'}} id="outlined-name" label="Long Value" style={{width:'70%'}}
+                            <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="Long Value" style={{ width: '70%' }}
 
                             />
                         </Box>
@@ -149,21 +197,21 @@ class Users extends Component {
 
                     <div className='thirdSection'>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '20px' }}>
-                            <TextField size="small" sx={{ width: '40ch'}} id="outlined-name" label="Last Name" style={{width:'70%'}}
+                            <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="Last Name" style={{ width: '70%' }}
 
                             />
                         </Box>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '40px' }}>
-                            <TextField size="small" sx={{ width: '40ch'}} id="outlined-name" label="User Name" style={{width:'70%'}}
+                            <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="User Name" style={{ width: '70%' }}
 
                             />
                         </Box>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '60px' }}>
-                            <TextField size="small" sx={{ width: '40ch'}} id="outlined-name" label="City" style={{width:'70%'}}
+                            <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="City" style={{ width: '70%' }}
 
                             />
                         </Box>
-                       
+
                     </div>
 
 
@@ -171,19 +219,19 @@ class Users extends Component {
 
 
                     <div className='forthSection'>
-                        
+
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '80px' }}>
-                            <TextField size="small" sx={{ width: '40ch'}} id="outlined-name" label="Street No" style={{width:'70%'}}
+                            <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="Street No" style={{ width: '70%' }}
 
                             />
                         </Box>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '100px' }}>
-                            <TextField size="small" sx={{ width: '40ch'}} id="outlined-name" label="Lat Value" style={{width:'70%'}}
+                            <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="Lat Value" style={{ width: '70%' }}
 
                             />
                         </Box>
                         <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '120px' }}>
-                            <TextField size="small" sx={{ width: '40ch'}} id="outlined-name" label="Mobile No" style={{width:'70%'}}
+                            <TextField size="small" sx={{ width: '40ch' }} id="outlined-name" label="Mobile No" style={{ width: '70%' }}
 
                             />
                         </Box>
@@ -202,8 +250,8 @@ class Users extends Component {
 
                 <section className='userTable'>
 
-                    <TableContainer component={Paper} style={{position:"relative",left:"-60px"}}>
-                        <Table sx={{ minWidth: 900 }} aria-label="customized table">
+                    <TableContainer component={Paper} style={{ position: "relative", left: "-100px" }}>
+                        <Table sx={{ minWidth: 1450 }} aria-label="customized table">
                             <TableHead>
                                 <TableRow>
                                     <TableCell>FirstName</TableCell>
@@ -223,7 +271,50 @@ class Users extends Component {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                            
+
+
+                                {
+                                    this.state.data.map((row) => (
+                                        <TableRow>
+                                            <TableCell>{row.name.firstname}</TableCell>
+                                            <TableCell align="right">{row.name.lastname}</TableCell>
+                                            <TableCell align="right">{row.email}</TableCell>
+
+                                            <TableCell align="right">{row.username}</TableCell>
+                                            <TableCell align="right">{row.password}</TableCell>
+                                            <TableCell align="right">{row.address.city}</TableCell>
+                                            <TableCell align="right">{row.address.street}</TableCell>
+                                            <TableCell align="right">{row.address.number}</TableCell>
+
+                                            <TableCell align="right">{row.address.zipcode}</TableCell>
+                                            <TableCell align="right">{row.address.geolocation.lat}</TableCell>
+                                            <TableCell align="right">{row.address.geolocation.long}</TableCell>
+                                            <TableCell align="right">{row.phone}</TableCell>
+
+                                            <TableCell align="right">
+
+                                            <Tooltip title="Delete"><IconButton
+                                        onClick={() => {
+                                            this.deleteUser(row.id);
+                                        }}
+                                    ><DeleteIcon color="error" /></IconButton>
+                                    </Tooltip>
+
+                                    <Tooltip title="Edit"><IconButton
+                                        onClick={() => {
+                                            console.log("edit icon clicked!")
+                                            this.updateUser(row);
+                                        }}
+                                    ><EditIcon color='primary'/></IconButton>
+                                    </Tooltip>
+                                              
+                                            </TableCell>
+                                        </TableRow>
+                                    ))
+
+
+                                }
+
 
                             </TableBody>
                         </Table>
@@ -237,3 +328,18 @@ class Users extends Component {
 }
 
 export default Users;
+
+  {/* <Tooltip title="Delete"><IconButton
+                                                    onClick={() => {
+                                                        this.deletecreateUser(row.id)
+                                                    }}
+                                                ><DeleteIcon color="error" /></IconButton>
+                                                </Tooltip> */}
+
+                                                {/* <Tooltip title="Edit"><IconButton
+                                        onClick={() => {
+                                            console.log("edit icon clicked!")
+                                            this.updateRentalRate(row);
+                                        }}
+                                    ><EditIcon color='primary'/></IconButton>
+                                    </Tooltip> */}

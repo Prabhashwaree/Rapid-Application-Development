@@ -1,10 +1,10 @@
 import axios from "../axios";
 
-class createUser{
-    postCreateUser = async (data) => {
+class products{
+    postProducts = async (data) => {
         //   console.log(data);
         const promise = new Promise((resolve, reject) => {
-            axios.post('users', data)    // 20s
+            axios.post('products', data)    // 20s
                 .then((res) => {
                     return resolve(res)
                 })
@@ -18,9 +18,9 @@ class createUser{
 
 
 
-        GetCreateUser = async () => {
+        GetProducts = async () => {
             const promise = new Promise((resolve, reject) => {
-                axios.get('users')
+                axios.get('products')
                     .then((res) => {
                         return resolve(res)
                     })
@@ -31,9 +31,9 @@ class createUser{
             return await promise;
         }
 
-        deleteCreateUser = async (params) => {
+        deleteProducts = async (params) => {
             const promise = new Promise((resolve, reject) => {
-               axios.delete('users/'+ params,)
+               axios.delete('products', {params: params})
                .then((res) => {
                    return resolve(res)
                }) 
@@ -46,19 +46,5 @@ class createUser{
 
 
 
-       PutCreateUser  = async (data) => {
-        const promise = new Promise((resolve, reject) => {
-           axios.put('users', data)
-           .then((res) => {
-               return resolve(res)
-           })
-           .catch((err) => {
-               return resolve(err)
-           })
-        })
-        return await promise;
-   };
-
-
 }
-export default  new createUser();
+export default  new products();

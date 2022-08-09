@@ -3,6 +3,7 @@ import './carts.css'
 import Autocomplete from '@mui/material/Autocomplete';
 import Box from '@mui/material/Box';
 import { TextField } from '@mui/material';
+import CartService from '../../../service/cart.js';
 
 
 const top100Films = [
@@ -10,6 +11,40 @@ const top100Films = [
     { label: 'No' }];
 
 class Carts extends Component {
+
+    constructor(props){
+        super(props);
+
+        this.state = {
+            FormData: {
+                id: '',
+                userId: '',
+                date: "",
+                products: [
+                    {
+                        productId: '',
+                        quantity: ''
+                    },
+                    {
+                        productId: '',
+                        quantity: ''
+                    }
+                ]
+            },
+            
+           
+         
+  
+        }
+
+    }
+
+
+   
+
+
+
+
     render() {
         return (
             <>
@@ -26,7 +61,7 @@ class Carts extends Component {
 
                                     sx={{ width: 260 }}
                                     renderInput={(params) => <TextField
-                                        {...params} label="Need a driver or not?" />}
+                                        {...params} label="User Name" />}
                                 />
                             </Box>
 
@@ -39,7 +74,7 @@ class Carts extends Component {
 
                                     sx={{ width: 260 }}
                                     renderInput={(params) => <TextField
-                                        {...params} label="Need a driver or not?" />}
+                                        {...params} label="Product Title" />}
                                 />
                             </Box>
 
@@ -61,7 +96,7 @@ class Carts extends Component {
                             />
 
                             <Box component="form" noValidate autoComplete="off" style={{ position: 'relative', textAlign: 'center', top: '80px',left:"10px" }}>
-                                <TextField size="small" sx={{ width: '40ch'}} id="outlined-name" label="Address" style={{ width: '70%' }}
+                                <TextField size="small" sx={{ width: '40ch'}} id="outlined-name" label="QTY" style={{ width: '70%' }}
 
                                 />
                             </Box>

@@ -5,9 +5,38 @@
 }
 /* ,left:'20px' */
 
-.cardSection{
+/* .cardSection{
     display: flex;
-    margin: 10px;
+    margin: 20px;
+    /* height: 90px; */
 
-   
-}
+
+ .homeSection1{
+    width: 30vw;
+    height: 40vh;
+    top:120px;
+    left: -10px;
+    /* border: 1px solid red; */
+    margin: 20px;
+    position: relative;
+ }  
+
+ .homeSection2{
+    width: 30vw;
+    height: 40vh;
+    top:-210px;
+    left: 410px;
+    /* border: 1px solid red; */
+    margin: 20px;
+    position: relative;
+ } 
+
+ .homeSection3{
+    width: 30vw;
+    height: 40vh;
+    top:-540px;
+    left: 830px;
+    /* border: 1px solid red; */
+    margin: 20px;
+    position: relative;
+ } 

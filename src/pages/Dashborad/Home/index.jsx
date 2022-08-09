@@ -4,45 +4,40 @@ import Card from '@mui/material/Card';
 import { CardActionArea } from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import './home.css'
+import backHome from '../../../assets/img/backHome.jpg';
+
 
 class Home extends Component {
     render() {
         return (
             <>
                 <section>
-                    <div className='cardSection'>
-                        <Card sx={{ maxWidth: 345 }} style={{ position: "relative", top: "120px",border:'1px solid red' }}>
-                            <CardActionArea>
-                                <CardContent>
 
-                                </CardContent>
-                                <h1>Our Customers Always 100% Satisfied</h1>
+                        <div>
+                            
+                        <img src={backHome} className='homeSection1'/>
+                        <h1 style={{ position: "relative",left:"250px",zIndex:"2",top:"-70px"}}>Product 10</h1>
 
-                            </CardActionArea>
-                        </Card>
-
-                        <Card sx={{ maxWidth: 345 }} style={{ position: "relative", top: "120px" ,border:'1px solid red'}}>
-                            <CardActionArea>
-                                <CardContent>
-
-                                </CardContent>
-                                <h1>We Provide Easier & Faster Bookings</h1>
-
-                            </CardActionArea>
-                        </Card>
+                        </div>
 
 
-                        <Card sx={{ maxWidth: 345 }} style={{ position: "relative", top: "120px",border:'1px solid red'}}>
-                            <CardActionArea>
-                                <CardContent>
+                        <div>
+                            
+                        <img src={backHome} className='homeSection2'/>
+                        <h1 style={{ position: "relative",left:"680px",zIndex:"2",top:"-400px"}}>Cart 12</h1>
 
-                                </CardContent>
-                                <h1>Your Choice of Any Pickup Location</h1>
+                        </div>
 
-                            </CardActionArea>
-                        </Card>
 
-                    </div>
+                        <div>
+                            
+                        <img src={backHome} className='homeSection3'/>
+                        <h1 style={{ position: "relative",left:"1100px",zIndex:"2",top:"-735px"}}>Users 49</h1>
+
+                        </div>
+
+
+
                 </section>
             </>
         );
